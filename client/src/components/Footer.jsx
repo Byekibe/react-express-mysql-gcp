@@ -1,8 +1,9 @@
 const Footer = () => {
     return (
-        <>
-        Footer
-        </>
+        <footer>
+            <h6>Diet&Nutrition</h6>
+            <span>&copy;2023 Fay Chiri</span>
+        </footer>
     );
 };
 

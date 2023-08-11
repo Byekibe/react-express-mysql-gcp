@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Single from './pages/Single';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer';
+import './style.scss';
 import { createBrowserRouter, RouterProvider, Route, Link, Outlet } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -53,9 +54,9 @@ function App() {
   return (
     <div className='app'>
       <div className="container">
-        <h1 className='custom-logo-font'>
+        {/* <h1 className='custom-logo-font'>
           Faith Chiri
-        </h1>
+        </h1> */}
         <RouterProvider router={router} />
       </div>
     </div>
