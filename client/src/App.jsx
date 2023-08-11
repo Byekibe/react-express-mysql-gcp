@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import Home from './pages/Home';
+import Write from './pages/Write';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Single from './pages/Single';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer';
+import { createBrowserRouter, RouterProvider, Route, Link, Outlet } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children:[
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/write",
+        element: <Write />,
+      },
+      {
+        path: "/post/:id",
+        element: <Single />,
+      },
+    ]
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+]);
 
+function Layout() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
+  );
+};
+
+function App() {
+
+  return (
+    <div className='app'>
+      <div className="container">
+        <h1 className='custom-logo-font'>
+          Faith Chiri
+        </h1>
+        <RouterProvider router={router} />
+      </div>
+    </div>
   )
-}
+};
 
 export default App
